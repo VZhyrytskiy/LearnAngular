@@ -9,16 +9,18 @@ export class HighlightDirective {
 
   private color = 'lightgreen';
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) { console.log('Hi'); }
 
   @HostListener('mouseenter')
   onMouseEnter(): void {
     this.highlight(this.color);
+    console.log('1');
   }
 
   @HostListener('mouseleave')
   leave(): void {
     this.highlight(null);
+    console.log('2');
   }
 
   private highlight(color: string): void {
