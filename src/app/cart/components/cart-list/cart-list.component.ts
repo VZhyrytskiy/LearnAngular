@@ -8,24 +8,18 @@ import { CartItem } from '../../models/cart-item';
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss'],
-// альтернативный вариант обновления корзины.
-// можно использовать или нет, на ваше усмотрение
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartListComponent implements OnInit {
-  // products: Map<Product, number>;
+  products: Map<Product, number>;
 
   constructor(
     private cartService: CartService,
-    // private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef
   ) { }
 
-  get products() {
-    return this.cartService.products;
-  }
-
   ngOnInit(): void {
-    // this.products = this.cartService.products;
+    this.products = this.cartService.products;
   }
 
   onChangeItemNumber(item: CartItem): void {
@@ -44,7 +38,7 @@ export class CartListComponent implements OnInit {
     return this.cartService.sum;
   }
 
-  // refresh(): void {
-  //   this.cdr.markForCheck();
-  // }
+  refresh(): void {
+    this.cdr.markForCheck();
+  }
 }
