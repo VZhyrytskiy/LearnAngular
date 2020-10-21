@@ -16,6 +16,6 @@ export class AppComponent implements AfterViewInit {
   }
 
   onCartUpdated(): void {
-    this.cartList.refresh();
+    // this.cartList.refresh();
   }
 }
